@@ -31,13 +31,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Hesaplayıcı Fonksiyonları
-    const calculateBtn = document.getElementById('calculate-btn');
-    if (calculateBtn) {
-        calculateBtn.addEventListener('click', function() {
-            calculateFitness();
-        });
-    }
+    // Hesaplayıcı Fonksiyonları - Bu kısmı kaldırıyoruz (aşağıda daha kapsamlı bir versiyonu var)
+    // const calculateBtn = document.getElementById('calculate-btn');
+    // if (calculateBtn) {
+    //     calculateBtn.addEventListener('click', function() {
+    //         calculateFitness();
+    //     });
+    // }
     
     // Yağ Oranı Hesaplama için gerekli elementleri seçelim
     const fatCalculatorForm = document.getElementById("fat-calculator");
@@ -126,127 +126,161 @@ document.addEventListener('DOMContentLoaded', function() {
         
         fatCategory.textContent = category;
     });
+    
+   
 });
+
+// Initialize fitness calculator functionality
+function initializeFitnessCalculator() {
+    const calculateBtn = document.getElementById("calculate-btn");
+    if (!calculateBtn) return;
+    
+    calculateBtn.addEventListener("click", function() {
+        // Simple validation
+        const age = document.getElementById("age");
+        const height = document.getElementById("height");
+        const weight = document.getElementById("weight");
+        const activity = document.getElementById("activity");
+        
+        if (!age || !height || !weight || !activity) {
+            console.error("Form elements not found");
+            return;
+        }
+        
+        if (!age.value || !height.value || !weight.value || !activity.value) {
+            alert("Lütfen tüm alanları doldurun.");
+            return;
+        }
+        
+        // All validation passed, perform calculation
+        calculateFitness();
+    });
+}
 
 // Fitness Hesaplayıcı Fonksiyonu
 function calculateFitness() {
-    // Mevcut değerleri al
-    const age = parseInt(document.getElementById("age").value);
-    const gender = document.querySelector('input[name="gender"]:checked').value;
-    const height = parseFloat(document.getElementById("height").value);
-    const weight = parseFloat(document.getElementById("weight").value);
-    const activity = parseFloat(document.getElementById("activity").value);
-    
-    // Vücut yağ oranını al (manuel giriş için yeni eklenen alan)
-    const bodyFatPercentage = parseFloat(document.getElementById("body-fat-percentage").value) || 0;
-    
-    // BMI hesaplama
-    const bmi = weight / ((height / 100) * (height / 100));
-    const bmiRounded = Math.round(bmi * 10) / 10;
-    
-    // İdeal kilo aralığı hesaplama
-    const minIdealWeight = Math.round(18.5 * ((height / 100) * (height / 100)));
-    const maxIdealWeight = Math.round(24.9 * ((height / 100) * (height / 100)));
-    
-    // Yağsız vücut kütlesi (LBM) hesaplama
-    let lbm = 0;
-    if (bodyFatPercentage > 0) {
-        // Yağ oranı girilmişse LBM hesapla
-        lbm = weight * (1 - (bodyFatPercentage / 100));
-    } else {
-        // Yağ oranı girilmemişse tahmini LBM hesapla
-        if (gender === "male") {
-            // Erkekler için tahmini LBM formülü (Boer formülü)
-            lbm = 0.407 * weight + 0.267 * height - 19.2;
+    try {
+        // Get form elements
+        const age = parseInt(document.getElementById("age").value);
+        const gender = document.querySelector('input[name="gender"]:checked').value;
+        const height = parseFloat(document.getElementById("height").value);
+        const weight = parseFloat(document.getElementById("weight").value);
+        const activity = parseFloat(document.getElementById("activity").value);
+        
+        // Optional body fat percentage
+        const bodyFatPercentageElement = document.getElementById("body-fat-percentage");
+        const bodyFatPercentage = bodyFatPercentageElement && bodyFatPercentageElement.value ? 
+                                 parseFloat(bodyFatPercentageElement.value) : 0;
+        
+        // BMI calculation
+        const bmi = weight / ((height / 100) * (height / 100));
+        const bmiRounded = Math.round(bmi * 10) / 10;
+        
+        // Ideal weight range
+        const minIdealWeight = Math.round(18.5 * ((height / 100) * (height / 100)));
+        const maxIdealWeight = Math.round(24.9 * ((height / 100) * (height / 100)));
+        
+        // LBM calculation
+        let lbm = 0;
+        if (bodyFatPercentage > 0) {
+            lbm = weight * (1 - (bodyFatPercentage / 100));
         } else {
-            // Kadınlar için tahmini LBM formülü (Boer formülü)
-            lbm = 0.252 * weight + 0.473 * height - 48.3;
+            if (gender === "male") {
+                lbm = 0.407 * weight + 0.267 * height - 19.2;
+            } else {
+                lbm = 0.252 * weight + 0.473 * height - 48.3;
+            }
         }
-    }
-    
-    // BMR hesaplama (Katch-McArdle formülü ile - yağsız vücut kütlesine dayalı)
-    let bmr = 0;
-    if (bodyFatPercentage > 0) {
-        // Yağ oranı biliniyorsa daha doğru formül kullan
-        bmr = 370 + (21.6 * lbm);
-    } else {
-        // Yağ oranı bilinmiyorsa Harris-Benedict formülünü kullan
-        if (gender === "male") {
-            bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+        
+        // BMR calculation
+        let bmr = 0;
+        if (bodyFatPercentage > 0) {
+            bmr = 370 + (21.6 * lbm);
         } else {
-            bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+            if (gender === "male") {
+                bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+            } else {
+                bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+            }
         }
-    }
-    
-    // Günlük kalori ihtiyacı
-    const dailyCalories = Math.round(bmr * activity);
-    
-    // BMI kategorisi belirleme
-    let bmiCategory = "";
-    if (bmi < 18.5) bmiCategory = "Zayıf";
-    else if (bmi < 25) bmiCategory = "Normal";
-    else if (bmi < 30) bmiCategory = "Fazla Kilolu";
-    else bmiCategory = "Obez";
-    
-    // Sonuçları gösterme
-    document.getElementById("bmi-result").textContent = bmiRounded;
-    document.getElementById("bmi-category").textContent = bmiCategory;
-    document.getElementById("bmr-result").textContent = Math.round(bmr); // BMR değerini yuvarlayıp göster
-    document.getElementById("calorie-result").textContent = dailyCalories;
-    document.getElementById("ideal-weight-result").textContent = minIdealWeight + " - " + maxIdealWeight;
-    
-    // Eğer yağ oranı girilmişse ekstra bilgi göster
-    if (bodyFatPercentage > 0) {
-        document.getElementById("lbm-container").style.display = "block";
-        document.getElementById("lbm-result").textContent = Math.round(lbm * 10) / 10;
-    } else {
-        document.getElementById("lbm-container").style.display = "none";
+        
+        // Daily calorie needs
+        const dailyCalories = Math.round(bmr * activity);
+        
+        // BMI category
+        let bmiCategory = "";
+        if (bmi < 18.5) bmiCategory = "Zayıf";
+        else if (bmi < 25) bmiCategory = "Normal";
+        else if (bmi < 30) bmiCategory = "Fazla Kilolu";
+        else bmiCategory = "Obez";
+        
+        // Display results
+        const bmiResult = document.getElementById("bmi-result");
+        const bmiCategoryElement = document.getElementById("bmi-category");
+        const bmrResult = document.getElementById("bmr-result");
+        const calorieResult = document.getElementById("calorie-result");
+        const idealWeightResult = document.getElementById("ideal-weight-result");
+        const lbmContainer = document.getElementById("lbm-container");
+        const lbmResult = document.getElementById("lbm-result");
+        
+        // Check if elements exist before updating them
+        if (bmiResult) bmiResult.textContent = bmiRounded;
+        if (bmiCategoryElement) bmiCategoryElement.textContent = bmiCategory;
+        if (bmrResult) bmrResult.textContent = Math.round(bmr);
+        if (calorieResult) calorieResult.textContent = dailyCalories;
+        if (idealWeightResult) idealWeightResult.textContent = minIdealWeight + " - " + maxIdealWeight;
+        
+        // Show LBM results if body fat percentage is provided
+        if (bodyFatPercentage > 0 && lbmContainer && lbmResult) {
+            lbmContainer.style.display = "block";
+            lbmResult.textContent = Math.round(lbm * 10) / 10;
+        } else if (lbmContainer) {
+            lbmContainer.style.display = "none";
+        }
+        
+        // Show results section
+        const resultsSection = document.querySelector(".results-section");
+        if (resultsSection && resultsSection.style.display === "none") {
+            resultsSection.style.display = "block";
+        }
+    } catch (error) {
+        console.error("Hesaplama sırasında bir hata oluştu:", error);
+        alert("Hesaplama yapılırken bir hata oluştu. Lütfen tüm alanları doğru doldurduğunuzdan emin olun.");
     }
 }
 
-// Hesapla butonuna tıklandığında
-document.getElementById("calculate-btn").addEventListener("click", function() {
-    // Form doğrulaması
-    const fitnessCalculatorForm = document.getElementById("fitness-calculator");
-    const allInputs = fitnessCalculatorForm.querySelectorAll("input[required], select[required]");
-    let isValid = true;
-    
-    allInputs.forEach(input => {
-        if (!input.value) {
-            isValid = false;
-            input.classList.add("error");
-        } else {
-            input.classList.remove("error");
-        }
-    });
-    
-    if (!isValid) {
-        alert("Lütfen tüm gerekli alanları doldurun.");
-        return;
-    }
-    
-    // Hesaplama fonksiyonunu çağır
-    calculateFitness();
-});
-
 // Vücut yağ oranını kalori hesaplayıcıya aktarma fonksiyonu
-document.getElementById("transfer-fat-btn").addEventListener("click", function() {
-    const fatPercentage = document.getElementById("fat-percentage").textContent;
-    
-    if (fatPercentage !== "--") {
-        // Yağ yüzdesini sayıya çevir (% işaretini kaldır)
-        const fatValue = parseFloat(fatPercentage.replace("%", ""));
-        
-        // Değeri kalori hesaplayıcıdaki alana aktar
-        document.getElementById("body-fat-percentage").value = fatValue;
-        
-        // Sayfayı kalori hesaplayıcıya kaydır
-        document.getElementById("fitness-calculator").scrollIntoView({ behavior: "smooth" });
-        
-        // Kullanıcıya bilgi ver
-        alert("Vücut yağ oranı kalori hesaplayıcıya aktarıldı. Lütfen diğer bilgileri doldurup hesaplama yapın.");
-    } else {
-        alert("Lütfen önce vücut yağ oranını hesaplayın.");
+document.addEventListener("DOMContentLoaded", function() {
+    const transferFatBtn = document.getElementById("transfer-fat-btn");
+    if (transferFatBtn) {
+        transferFatBtn.addEventListener("click", function() {
+            const fatPercentage = document.getElementById("fat-percentage");
+            const bodyFatInput = document.getElementById("body-fat-percentage");
+            
+            if (!fatPercentage || !bodyFatInput) {
+                console.error("Yağ oranı aktarımı için gereken alanlar bulunamadı");
+                return;
+            }
+            
+            if (fatPercentage.textContent !== "--") {
+                // Yağ yüzdesini sayıya çevir (% işaretini kaldır)
+                const fatValue = parseFloat(fatPercentage.textContent.replace("%", ""));
+                
+                // Değeri kalori hesaplayıcıdaki alana aktar
+                bodyFatInput.value = fatValue;
+                
+                // Sayfayı kalori hesaplayıcıya kaydır
+                const fitnessCalculator = document.getElementById("fitness-calculator");
+                if (fitnessCalculator) {
+                    fitnessCalculator.scrollIntoView({ behavior: "smooth" });
+                }
+                
+                // Kullanıcıya bilgi ver
+                alert("Vücut yağ oranı kalori hesaplayıcıya aktarıldı. Lütfen diğer bilgileri doldurup hesaplama yapın.");
+            } else {
+                alert("Lütfen önce vücut yağ oranını hesaplayın.");
+            }
+        });
     }
 });
 
