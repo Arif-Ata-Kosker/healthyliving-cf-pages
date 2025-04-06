@@ -1258,3 +1258,231 @@ body, html {
         padding: 20px 15px;
     }
 }
+
+/* Özlü söz stilleri - daha belirgin */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap');
+
+.quote-section {
+    background-color: var(--bg-secondary);
+    padding: 30px 15px;
+    text-align: center;
+    border-left: 4px solid var(--accent-blue);
+    margin: 0;
+    position: relative;
+}
+
+.quote-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Sol hizalama */
+    position: relative;
+}
+
+.quote-text {
+    font-family: 'Playfair Display', serif; /* Farklı font */
+    font-size: 1.1em; /* Daha büyük yazı */
+    line-height: 1.6;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    font-style: italic;
+    text-align: center;
+    width: 100%;
+    font-weight: 500;
+}
+
+.quote-text::before,
+.quote-text::after {
+    content: '"';
+    color: var(--accent-orange);
+    font-size: 1.2em;
+}
+
+.quote-author {
+    font-size: 0.7em; /* Daha büyük yazı */
+    color: var(--accent-orange);
+    font-weight: normal;
+    align-self: flex-start; /* Sol hizalama */
+    margin-left: 20px; /* Sol boşluk */
+    position: relative;
+}
+
+.quote-author::before {
+    content: "— ";
+}
+
+/* Özlü söz stilleri - büyütülmüş ve bölüm renklerine uyarlanmış */
+.quote-section {
+    background-color: var(--bg-secondary);
+    padding: 35px 15px;
+    text-align: center;
+    margin: 0;
+    position: relative;
+}
+
+.quote-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+.quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.375em; /* %25 büyütüldü */
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-style: italic;
+    text-align: center;
+    width: 100%;
+    font-weight: 500;
+}
+
+.quote-author {
+    font-size: 0.875em; /* Biraz daha büyük */
+    font-weight: normal;
+    align-self: flex-start;
+    margin-left: 20px;
+    position: relative;
+}
+
+.quote-author::before {
+    content: "— ";
+}
+
+/* Her bölüm için özlü söz renk ayarları */
+/* Home ve About arasındaki özlü söz */
+#home + .quote-section {
+    border-left: 4px solid var(--text-light);
+}
+#home + .quote-section .quote-text,
+#home + .quote-section .quote-author {
+    color: var(--text-light);
+}
+
+/* About ve Services arasındaki özlü söz */
+#about + .quote-section {
+    border-left: 4px solid var(--accent-blue);
+}
+#about + .quote-section .quote-text,
+#about + .quote-section .quote-author {
+    color: var(--accent-blue);
+}
+
+/* Services ve Ebooks arasındaki özlü söz */
+#services + .quote-section {
+    border-left: 4px solid var(--accent-orange);
+}
+#services + .quote-section .quote-text,
+#services + .quote-section .quote-author {
+    color: var(--accent-orange);
+}
+
+/* Ebooks ve Calculators arasındaki özlü söz */
+#ebooks + .quote-section {
+    border-left: 4px solid var(--accent-green);
+}
+#ebooks + .quote-section .quote-text,
+#ebooks + .quote-section .quote-author {
+    color: var(--accent-green);
+}
+
+/* Özlü söz stilleri - düzeltilmiş */
+.quote-section {
+    background-color: var(--bg-secondary);
+    padding: 35px 15px;
+    text-align: center;
+    margin: 0;
+    position: relative;
+    /* Border-left özelliğini koru, ID'ler üzerinden tanımlı */
+}
+
+.quote-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+.quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5125em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-style: italic;
+    text-align: center;
+    width: 100%;
+    font-weight: 500;
+    color: var(--text-light) !important; /* Tüm alıntı metinleri beyaz olacak */
+}
+
+.quote-text::before,
+.quote-text::after {
+    content: '"';
+    color: var(--text-light); /* Tırnak işaretleri beyaz */
+    font-size: 1.2em;
+}
+
+.quote-author {
+    font-size: 0.9em;
+    font-weight: normal;
+    align-self: flex-start;
+    margin-left: 20px;
+    position: relative;
+    color: var(--text-light) !important; /* Tüm yazar isimleri beyaz olacak */
+}
+
+.quote-author::before {
+    content: "— ";
+}
+
+/* Bölüm kenar renklerini koruyoruz, bu kısımda değişiklik yok */
+
+/* Bölüm kenar renkleri düzeltildi */
+#home {
+    border-left: 4px solid var(--text-light);
+}
+
+#about {
+    border-left: 4px solid var(--accent-blue);
+}
+
+#services {
+    border-left: 4px solid var(--accent-orange);
+}
+
+#ebooks {
+    border-left: 4px solid var(--accent-green);
+}
+
+#calculators {
+    border-left: 4px solid var(--accent-lightblue);
+}
+
+/* Özlü söz kenar renkleri düzeltildi - kendinden sonraki bölümün rengini alır */
+#quote1, 
+#home + .quote-section {
+    border-left-color: var(--accent-blue); /* About rengi */
+}
+
+#quote2, 
+#about + .quote-section {
+    border-left-color: var(--accent-orange); /* Services rengi */
+}
+
+#quote3, 
+#services + .quote-section {
+    border-left-color: var(--accent-green); /* Ebooks rengi */
+}
+
+#quote4, 
+#ebooks + .quote-section {
+    border-left-color: var(--accent-lightblue); /* Calculators rengi */
+}
+
+/* Gereksiz ve çelişkili kurallar kaldırıldı */
