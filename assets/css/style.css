@@ -1,0 +1,1012 @@
+/* CSS Değişkenleri - Renk Şeması */
+:root {
+    --bg-primary: #3a3a3a;
+    --bg-secondary: #2a2a2a;
+    --bg-dark: #222222;
+    --bg-darker: #1a1a1a;
+    --text-light: #ffffff;
+    --text-muted: #dddddd;
+    --accent-blue: #33ccff;
+    --accent-orange: #ff9900;
+    --accent-green: #66cc66;
+    --border-dark: #444444;
+    /* Öneri: Daha fazla tutarlılık için aşağıdaki gibi ek değişkenler tanımlanabilir */
+    /* --bg-medium: #333333; */
+    /* --link-youtube: #ff0000; */
+    /* --link-linkedin: #0077b5; */
+    /* ... vb. */
+}
+
+/* Genel Kutu Modeli */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Genel Stiller */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-light);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Yatay kaydırmayı engeller */
+    max-width: 100%;   /* İçeriğin taşmasını engeller */
+}
+
+/* Başlık Stilleri - Birleştirildi */
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+h1 {
+    color: var(--text-light);
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px; /* Genel h1-h6 kuralını geçersiz kılar */
+}
+
+h2 {
+    border-bottom: 1px solid #555; /* Değişken kullan? --border-dark? */
+    color: var(--accent-orange);
+    font-size: 24px;
+    padding-bottom: 5px;
+}
+
+h3 {
+    color: var(--accent-blue);
+    font-size: 20px;
+}
+
+/* Paragraf Stilleri */
+p {
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Özel Paragraf/Açıklama Stilleri */
+.service-description {
+    color: var(--accent-orange);
+}
+
+.about-description {
+    color: var(--accent-blue);
+    /* font-size: 16px; ve line-height: 1.5; zaten genel 'p' stilinden geliyor */
+}
+
+.home-description {
+    color: var(--text-light);
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+#contact p {
+    color: var(--accent-green);
+}
+
+.ebooks-description {
+    color: var(--text-muted);
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.ebook-info p {
+    color: #bbbbbb; /* --text-muted'a yakın, değişken olabilir */
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.calculator-info p {
+    color: #ccc; /* --text-muted'a yakın, değişken olabilir */
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.form-hint {
+    color: #999; /* Değişken olabilir */
+    display: block;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Footer Stili */
+footer {
+    /* Footer için genel bir arka plan vs. eklenebilir */
+    margin-top: 30px;
+    padding: 20px 0; /* Üst/alt boşluk */
+}
+
+footer p {
+    color: #999999; /* Değişken olabilir: --text-footer? */
+    font-size: 14px;
+    margin-top: 0; /* Footer padding'i olduğu için 0'a ayarlandı */
+    text-align: center;
+}
+
+/* Ana İçerik Alanı */
+main {
+    max-width: 100%;
+    /* margin: 0; padding: 0; width: 100%; genellikle gereksiz */
+}
+
+/* Bölüm Stilleri */
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    text-align: center;
+    width: 100%; /* box-sizing: border-box ile birlikte çalışır */
+}
+
+#home {
+    background-color: var(--bg-primary); /* #333 yerine en yakın değişken */
+    border-left: 4px solid var(--text-light);
+    /* padding-top: 40px; padding-bottom: 50px; -> shorthand ile değiştirildi */
+    padding: 40px 20px 50px; /* top | horizontal | bottom */
+}
+
+#about {
+    background-color: var(--bg-secondary);
+    border-left: 4px solid var(--accent-blue);
+}
+
+#services {
+    background-color: var(--bg-secondary); /* #252525 yerine en yakın değişken */
+    border-left: 4px solid var(--accent-orange);
+}
+
+#contact {
+    background-color: var(--bg-dark); /* #202020 yerine en yakın değişken */
+    border-left: 4px solid var(--accent-green);
+}
+
+#calculators {
+    background-color: var(--bg-darker);
+    border-left: 4px solid #3399ff; /* Değişken olabilir: --accent-lightblue? */
+    padding: 40px 20px;
+}
+
+#ebooks {
+    background-color: var(--bg-dark);
+    border-left: 4px solid var(--accent-green);
+    padding: 40px 20px;
+}
+
+/* Anasayfa Özel Stilleri */
+#home h1 {
+    color: var(--text-light);
+    font-size: 36px;
+    font-weight: bold;
+    /* margin-top: 30px; margin-bottom: 30px; -> shorthand ile değiştirildi */
+    margin: 30px auto; /* Üst/alt | yatay (auto merkezler) */
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Görsel Stilleri */
+.gif-container {
+    margin: 20px 0;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.featured-image {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: block; /* Ortalamak için margin: auto gerekebilir */
+    height: auto;
+    max-width: 100%; /* Daha güvenli */
+    /* width: 100%; yerine max-width: 100%; kullanmak genellikle daha iyidir */
+}
+
+/* E-kitap kapak görselleri */
+.ebook-image {
+    width: 100%; /* Kapsayıcı genişlik */
+    height: auto; /* Yükseklik otomatik */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Taşmayı engeller */
+}
+
+.ebook-image img {
+    width: 100%; /* Görselin genişliği kapsayıcıya uyacak */
+    height: auto; /* Oranını koruyarak yüksekliği ayarlar */
+    object-fit: contain; /* Görselin tamamını gösterir */
+    border-radius: 8px; /* Köşeleri yuvarlatır */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge ekler */
+    transition: transform 0.3s ease;
+}
+
+/* Header Stilleri */
+header {
+    background-color: var(--bg-dark);
+    padding: 10px 0;
+    /* width: 100%; gereksiz */
+}
+
+.header-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1200px; /* İçeriği sınırlar */
+    padding: 0 20px; /* Sağ/sol iç boşluk */
+}
+
+/* Top Bar Stili */
+.top-bar {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+/* Tüm ikonları içeren konteyner */
+.all-icons {
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly; /* veya space-around */
+    margin: 0 auto;
+    max-width: 500px; /* İkon grubunu sınırlar */
+    width: 100%;
+}
+
+/* Menü Stilleri */
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin: 0 15px; /* Öğeler arası boşluk */
+}
+
+nav a {
+    color: var(--text-light);
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent-orange);
+}
+
+/* Ana menü */
+#main-nav {
+    margin-top: 10px;
+    width: 100%; /* Flex item olduğu için veya mobil menü için gerekli olabilir */
+}
+
+/* Sosyal Medya İkon Stilleri */
+.social-icons {
+    align-items: center;
+    display: flex;
+    gap: 15px;
+    margin: 0; /* Gerekliyse ayarlanabilir */
+}
+
+.social-icon {
+    align-items: center;
+    background-color: var(--bg-primary); /* #333 yerine */
+    border-radius: 50%;
+    color: var(--text-light);
+    display: flex;
+    height: 36px;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: 36px;
+}
+
+.social-icon i {
+    color: var(--text-light); /* Zaten parent'tan alabilir ama açıkça belirtmek iyi olabilir */
+}
+
+.social-icon:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: translateY(-3px);
+    /* Not: Aşağıdaki hover renkleri 'transition: all' yerine sadece belirli bir background'u değiştirir */
+}
+
+/* Her sosyal medya için farklı hover rengi */
+.social-icon .fa-facebook-f:hover {
+    background-color: #3b5998; /* Değişken olabilir */
+}
+.social-icon .fa-twitter:hover {
+    background-color: #000000; /* Değişken olabilir */
+}
+.social-icon .fa-instagram:hover {
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+}
+.social-icon .fa-linkedin-in:hover {
+    background-color: #0077b5; /* Değişken olabilir */
+}
+.social-icon .fa-youtube:hover {
+    background-color: #ff0000; /* Değişken olabilir */
+}
+
+/* Hamburger menü ikonu */
+.mobile-menu-toggle {
+    align-items: center;
+    background-color: transparent;
+    color: var(--text-light);
+    cursor: pointer;
+    display: none; /* Varsayılan olarak gizli, mobilde gösterilecek */
+    font-size: 32px;
+    height: 45px;
+    justify-content: center;
+    margin-left: 15px; /* Sosyal ikonlardan ayırmak için */
+    transition: all 0.3s ease;
+    width: 45px;
+}
+
+/* Hesaplayıcılar Bölümü Stilleri */
+.calculator-container {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    margin: 0 auto 40px; /* margin-left/right auto ile ortalar */
+    max-width: 800px;
+    padding: 20px;
+}
+
+.calculator-table {
+    margin: 20px 0;
+    overflow-x: auto; /* Küçük ekranlarda tabloyu kaydırılabilir yapar */
+}
+
+/* Tablo stilleri */
+table {
+    border-collapse: collapse;
+    color: var(--text-light);
+    font-size: 16px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+th, td {
+    border-bottom: 1px solid var(--border-dark);
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--bg-darker); /* #1e1e1e yerine */
+    color: var(--accent-orange);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+tr:hover {
+    background-color: #383838; /* --bg-primary'e yakın, değişken olabilir */
+}
+
+/* Hesaplayıcı bölümü başlığı */
+#calculators h2 {
+    color: #3399ff; /* --accent-blue'ya yakın? */
+    font-size: 28px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Hesaplayıcı container başlıkları */
+.calculator-container h3 {
+    color: var(--accent-orange);
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Hesaplayıcı Form Stilleri */
+.calculator-form {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    margin: 0 auto 20px;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    color: var(--accent-orange);
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.form-group input[type="number"],
+.form-group select {
+    background-color: var(--bg-primary); /* #333 yerine */
+    border: 1px solid var(--border-dark);
+    border-radius: 4px;
+    color: var(--text-light);
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Cinsiyet seçim butonları */
+.radio-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.radio-label {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+}
+
+.radio-label input {
+    margin-right: 5px;
+}
+
+.calculate-btn {
+    background-color: var(--accent-orange);
+    border: none;
+    border-radius: 4px;
+    color: #000; /* Kontrast için siyah */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 20px;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.calculate-btn:hover {
+    background-color: #ffaa33; /* Turuncunun biraz açığı */
+}
+
+/* Sonuç Alanı Stili */
+.result-container {
+    background-color: var(--bg-dark); /* #222 yerine */
+    border-radius: 8px;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.result-container h3 {
+    color: var(--accent-orange);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.result-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.result-item {
+    background-color: var(--bg-primary); /* #333 yerine */
+    border-radius: 8px;
+    flex: 1; /* Eşit alan kaplaması için */
+    min-width: 150px; /* Minimum genişlik */
+    padding: 15px;
+    text-align: center;
+}
+
+.result-label {
+    color: #ccc; /* --text-muted'a yakın */
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.result-value {
+    color: var(--accent-orange);
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.result-category {
+    color: #aaa; /* Değişken olabilir */
+    font-size: 14px;
+}
+
+/* Hesaplayıcı Bilgi Alanı */
+.calculator-info {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    margin: 30px auto 0;
+    max-width: 700px;
+    padding: 20px;
+    text-align: center;
+}
+
+.calculator-info h3 {
+    color: var(--accent-orange);
+    margin-bottom: 10px;
+}
+
+/* Ücretsiz PDF Kitaplar Bölümü Stilleri */
+.ebooks-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.ebook-category {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    flex-basis: calc(33.333% - 30px); /* 3 sütunlu yapı için */
+    margin-bottom: 20px;
+    min-width: 280px; /* Minimum genişlik */
+    padding: 20px;
+}
+
+.ebook-category h3 {
+    border-bottom: 1px solid var(--border-dark);
+    color: var(--accent-green);
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.ebook-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ebook-item {
+    background-color: var(--bg-primary); /* #333333 yerine */
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Resmin taşmasını engeller */
+    transition: transform 0.3s ease;
+}
+
+.ebook-item:hover {
+    transform: translateY(-5px);
+}
+
+.ebook-image {
+    height: 180px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.ebook-image img {
+    height: 100%;
+    object-fit: cover; /* Resmin orantısını koruyarak kaplamasını sağlar */
+    transition: transform 0.3s ease;
+    width: 100%;
+}
+
+.ebook-item:hover .ebook-image img {
+    transform: scale(1.05);
+}
+
+.ebook-info {
+    padding: 15px;
+}
+
+.ebook-info h4 {
+    color: var(--text-light);
+    font-size: 18px;
+    margin-bottom: 10px;
+    /* text-align: center; h4 için genel kuraldan geliyor */
+}
+
+.download-btn {
+    background-color: var(--accent-green);
+    border-radius: 4px;
+    color: #000;
+    display: inline-block; /* Metinle aynı hizada durması için */
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 15px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #55bb55; /* Yeşilin biraz açığı */
+}
+
+.download-btn i {
+    margin-left: 5px;
+}
+
+/* Yağ Oranı Hesaplayıcı Özel Stilleri */
+#fat-calculator .error { /* JS tarafından eklenen class için */
+    border: 1px solid red;
+}
+
+#fat-result .result-item { /* Daha spesifik seçici */
+    /* background-color: #f8f9fa; Temanız koyu olduğu için bu açık renk sırıtabilir. */
+    /* Yukarıdaki .result-item stilini kullanması daha tutarlı olabilir. */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 15px;
+    text-align: center;
+}
+
+/* Yağ Kategorisi renkleri (Bunlar için değişken tanımlanabilir) */
+.fat-low { color: #2e7d32; } /* Koyu Yeşil */
+.fat-normal { color: #1976d2; } /* Mavi */
+.fat-high { color: #d32f2f; } /* Kırmızı */
+
+/* Transfer butonu */
+.transfer-btn {
+    align-items: center;
+    background-color: #2196F3; /* Mavi tonu, değişken olabilir */
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    display: flex; /* İkonu ortalamak için */
+    font-size: 14px;
+    gap: 5px;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 8px 12px;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.transfer-btn:hover {
+    background-color: #0b7dda; /* Mavinin koyu tonu */
+}
+
+/* Hakkımda Bölümü Yerleşimi */
+.about-container {
+    align-items: flex-start; /* Üstten hizalama */
+    display: flex;
+    gap: 30px;
+    margin: 0 auto;
+    max-width: 1000px; /* İçeriği sınırlar */
+}
+
+.about-image {
+    flex: 0 0 300px; /* Sabit genişlik, büyümez/küçülmez */
+}
+
+.about-image img {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: block; /* Alt boşluğu kaldırır */
+    max-width: 100%;
+    height: auto;
+}
+
+.about-text {
+    flex: 1; /* Kalan alanı doldurur */
+}
+
+/* Hizmetler Bölümü Yerleşimi */
+.services-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse; /* Resim sağda, yazı solda */
+    gap: 30px;
+    margin: 0 auto;
+    max-width: 1000px; /* İçeriği sınırlar */
+}
+
+.services-image {
+    flex: 0 0 400px; /* Sabit genişlik */
+}
+
+.services-image img {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Genel görsel stilleri */
+img {
+    max-width: 100%; /* Görselin kapsayıcı alanı aşmamasını sağlar */
+    height: auto; /* Oranını koruyarak yüksekliği ayarlar */
+    display: block; /* Görselin altındaki boşluğu kaldırır */
+}
+
+/* Hakkımda bölümü görseli */
+.about-image img {
+    width: 100%; /* Kapsayıcı genişliğe uyum sağlar */
+    max-width: 300px; /* Maksimum genişlik 300px */
+    height: auto; /* Oranını korur */
+    border-radius: 10px; /* Köşeleri yuvarlatır */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge ekler */
+    margin: 0 auto; /* Görseli ortalar */
+}
+
+/* Hizmetler bölümü görseli */
+.services-image img {
+    width: 100%; /* Kapsayıcı genişliğe uyum sağlar */
+    max-width: 400px; /* Maksimum genişlik 400px */
+    height: auto; /* Oranını korur */
+    border-radius: 10px; /* Köşeleri yuvarlatır */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge ekler */
+    margin: 0 auto; /* Görseli ortalar */
+}
+
+/* E-kitap kapak görselleri */
+.ebook-image img {
+    width: 100%; /* Kapsayıcı genişliğe uyum sağlar */
+    height: auto; /* Oranını korur */
+    border-radius: 8px; /* Köşeleri yuvarlatır */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge ekler */
+}
+
+/* Mobil uyum için medya sorguları */
+@media screen and (max-width: 768px) {
+    .about-image img,
+    .services-image img {
+        max-width: 100%; /* Mobilde tam genişlik */
+    }
+}
+
+/* Mobil uyum */
+@media screen and (max-width: 768px) {
+    .ebook-image img {
+        max-width: 100%; /* Mobilde tam genişlik */
+        height: auto; /* Oranını korur */
+    }
+}
+
+/* ======================================== */
+/* ======= MOBİL MEDYA SORGUSU (768px) ====== */
+/* ======================================== */
+@media screen and (max-width: 768px) {
+
+    /* Genel mobil düzenlemeler */
+    body {
+        font-size: 16px; /* Okunabilirliği artırmak için temel font boyutu */
+    }
+
+    h1, #home h1 { /* h1 boyutlarını küçült */
+        font-size: 28px; /* veya 1.8rem */
+    }
+
+    h2 {
+        font-size: 22px; /* veya 1.5rem */
+    }
+
+    /* Header ve Navigasyon */
+    .header-container {
+        flex-direction: column;
+        padding: 10px 15px; /* Mobil için padding ayarı */
+        width: 100%;
+    }
+
+    .top-bar {
+        padding: 10px 0;
+        width: 100%;
+        order: 1; /* İkonlar üstte */
+        margin-bottom: 10px;
+    }
+
+    .all-icons {
+        justify-content: center; /* Ortala */
+        gap: 20px; /* İkonlar arası boşluk */
+        max-width: none; /* Sınırı kaldır */
+    }
+
+    .mobile-menu-toggle {
+        display: flex; /* Hamburger ikonunu göster */
+        font-size: 28px;
+        margin-left: auto; /* Sağa yasla */
+        order: 2; /* Navigasyondan sonra (ama top-bar içinde) */
+    }
+
+    #main-nav {
+        display: none; /* Varsayılan olarak gizli */
+        order: 3; /* En altta */
+        position: absolute; /* Header'dan bağımsız konumlanır */
+        top: 60px; /* Header yüksekliğine göre ayarlayın */
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-primary); /* #333333 yerine */
+        z-index: 1000; /* Diğer içeriklerin üzerinde */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    #main-nav.show {
+        display: block; /* JS ile açıldığında göster */
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li {
+        margin: 0;
+        width: 100%;
+    }
+
+    nav ul li a {
+        border-bottom: 1px solid var(--border-dark);
+        display: block;
+        padding: 15px; /* Tıklama alanını büyüt */
+        text-align: center;
+    }
+
+    nav ul li:last-child a {
+        border-bottom: none;
+    }
+
+    /* Ana İçerik ve Bölümler */
+    main {
+        padding: 10px; /* Kenar boşlukları */
+    }
+
+    section {
+        padding: 20px 15px; /* Mobil için padding */
+    }
+
+    #home {
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+
+    #home h1 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    /* .featured-image ruleset removed because it was empty */
+
+    /* Hakkımda ve Hizmetler Yerleşimi */
+    .about-container,
+    .services-container {
+        flex-direction: column;
+        align-items: center; /* Ortala */
+    }
+
+    .about-image,
+    .services-image {
+        flex-basis: auto; /* Otomatik genişlik */
+        max-width: 300px; /* Resim çok büyümesin */
+        margin: 0 auto 20px; /* Ortala ve altta boşluk */
+        width: 100%;
+    }
+
+    /* Hesaplayıcılar */
+    .calculator-container {
+        padding: 15px;
+        margin-bottom: 30px;
+    }
+
+    table {
+        font-size: 14px; /* Daha küçük font */
+    }
+
+    th, td {
+        padding: 8px 10px; /* Daha küçük padding */
+    }
+
+    .radio-group {
+        flex-direction: column; /* Dikey hizala */
+        align-items: center; /* Ortala */
+        gap: 10px;
+    }
+
+    .result-grid {
+        flex-direction: column; /* Sonuçları dikey sırala */
+        gap: 15px;
+    }
+
+    .result-item {
+       min-width: auto; /* Minimum genişliği kaldır */
+    }
+
+    /* E-Kitaplar */
+    .ebooks-container {
+        flex-direction: column;
+        align-items: center; /* Ortala */
+    }
+
+    .ebook-category {
+        flex-basis: auto; /* Otomatik genişlik */
+        width: 100%;
+        max-width: 400px; /* Çok genişlemesin */
+        margin-bottom: 30px;
+    }
+
+    /* Ebook item zaten column flex */
+
+    .ebook-image {
+        height: 150px; /* Resim yüksekliğini azalt */
+    }
+
+    .about-image img,
+    .services-image img,
+    .ebook-image img {
+        max-width: 100%; /* Mobilde tam genişlik */
+        height: auto; /* Oranını korur */
+    }
+
+    .ebook-image {
+        height: auto; /* Mobilde yüksekliği otomatik ayarla */
+    }
+
+} /* Medya Sorgusu Sonu */
+
+/* Genel Görsel Stilleri */
+img {
+    max-width: 100%; /* Görselin kapsayıcı alanı aşmamasını sağlar */
+    height: auto; /* Oranını koruyarak yüksekliği ayarlar */
+    display: block; /* Görselin altındaki boşluğu kaldırır */
+}
+
+/* Hakkımda Bölümü Görseli */
+.about-image img {
+    max-width: 300px; /* Maksimum genişlik */
+    height: auto; /* Oranını korur */
+    border-radius: 10px; /* Köşeleri yuvarlatır */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge ekler */
+    margin: 0 auto; /* Ortalar */
+}
+
+/* Hizmetler Bölümü Görseli */
+.services-image img {
+    max-width: 400px; /* Maksimum genişlik */
+    height: auto; /* Oranını korur */
+    border-radius: 10px; /* Köşeleri yuvarlatır */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge ekler */
+    margin: 0 auto; /* Ortalar */
+}
+
+/* E-Kitap Kapak Görselleri */
+.ebook-image {
+    width: 100%; /* Kapsayıcı genişlik */
+    height: auto; /* Yükseklik otomatik */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Taşmayı engeller */
+}
+
+.ebook-image img {
+    width: 100%; /* Görselin genişliği kapsayıcıya uyacak */
+    height: auto; /* Oranını koruyarak yüksekliği ayarlar */
+    object-fit: contain; /* Görselin tamamını gösterir */
+    border-radius: 8px; /* Köşeleri yuvarlatır */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge ekler */
+}
+
+/* Mobil Uyum için Medya Sorguları */
+@media screen and (max-width: 768px) {
+    .about-image img,
+    .services-image img,
+    .ebook-image img {
+        max-width: 100%; /* Mobilde tam genişlik */
+        height: auto; /* Oranını korur */
+    }
+
+    .ebook-image {
+        height: auto; /* Mobilde yüksekliği otomatik ayarla */
+    }
+}
