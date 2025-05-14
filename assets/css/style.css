@@ -847,14 +847,39 @@ section h2 {
     /* Genel mobil düzenlemeler */
     body {
         font-size: 16px; /* Okunabilirliği artırmak için temel font boyutu */
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    main {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    section {
+        width: 100%;
+        padding: 15px;
+        box-sizing: border-box;
     }
 
     h1, #home h1 { /* h1 boyutlarını küçült */
         font-size: 28px; /* veya 1.8rem */
+        width: 100%;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
     }
 
     h2 {
         font-size: 22px; /* veya 1.5rem */
+        width: 100%;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    p {
+        width: 100%;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
     }
 
     /* Header ve Navigasyon */
@@ -956,14 +981,27 @@ section h2 {
         width: 100%;
     }
 
+    /* Text kayması sorununa çözüm */
+    .about-description,
+    .service-description {
+        width: 100%;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
+        padding: 0 5px;
+    }
+
     /* Hesaplayıcılar */
     .calculator-container {
         padding: 15px;
         margin-bottom: 30px;
+        width: 100%;
     }
 
     table {
         font-size: 14px; /* Daha küçük font */
+        width: 100%;
     }
 
     th, td {
@@ -983,12 +1021,14 @@ section h2 {
 
     .result-item {
        min-width: auto; /* Minimum genişliği kaldır */
+       width: 100%;
     }
 
     /* E-Kitaplar */
     .ebooks-container {
         flex-direction: column;
         align-items: center; /* Ortala */
+        width: 100%;
     }
 
     .ebook-category {
@@ -1000,6 +1040,7 @@ section h2 {
 
     .ebook-image {
         height: auto; /* Mobilde yüksekliği otomatik ayarla */
+        width: 100%;
     }
 
     /* Mobilde görseller için genel ayarlar */
@@ -1013,6 +1054,7 @@ section h2 {
     .about-container {
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
     
     .about-image {
@@ -1020,6 +1062,21 @@ section h2 {
         width: 100% !important; /* Full width of parent container */
         max-width: 325px !important; /* But no larger than 325px */
         margin-bottom: 20px !important;
+    }
+    
+    /* Ek düzeltmeler */
+    .services-text,
+    .about-text {
+        width: 100%;
+        padding: 0 5px;
+    }
+    
+    /* Form kontrollerini tam genişlikli yap */
+    .form-group input,
+    .form-group select,
+    .calculate-btn {
+        width: 100%;
+        box-sizing: border-box;
     }
 }
 
