@@ -22,3 +22,6 @@ dist/
 build/
 out/
 .next/
+
+# Büyük dosyalar
+# *.pdf # PDF dosyaları proje için gerekli olduğundan yorum satırı yapıldı
