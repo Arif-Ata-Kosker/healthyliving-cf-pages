@@ -1,40 +1,54 @@
-# Web Project
+# Fitness Koçluğu Web Sitesi
 
-This project is a single-page web application designed for a landing page layout. It consists of three main sections: About, Services, and a Header for navigation. The project is structured to allow for easy maintenance and scalability.
+Bu proje, fitness koçluğu hizmetlerini tanıtan bir kişisel web sitesidir. Anasayfa, Hakkımızda, Hizmetler, PDF Kitaplar ve Hesaplayıcılar bölümlerini içerir. Responsive tasarımı sayesinde hem masaüstü hem de mobil cihazlarda optimum görüntüleme sağlar.
 
-## Project Structure
+## Proje Yapısı
 
 ```
-web-project
-├── src
-│   ├── index.html          # Main entry point for the web application
-│   ├── assets
-│   │   ├── css
-│   │   │   └── style.css   # Styles for the landing page
-│   │   ├── js
-│   │   │   └── main.js     # JavaScript for interactions and animations
-│   │   └── images          # Directory for images used in the landing page
-│   └── components
-│       └── sections
-│           ├── header.html  # HTML structure for the header section
-│           ├── about.html   # HTML structure for the About section
-│           └── services.html # HTML structure for the Services section
-├── .gitignore              # Files and directories to be ignored by version control
-└── README.md               # Documentation for the project
+fitness-website
+├── index.html          # Ana sayfa
+├── assets
+│   ├── css
+│   │   └── style.css   # CSS stilleri
+│   ├── js
+│   │   └── main.js     # JavaScript fonksiyonları
+│   ├── images          # Görseller dizini
+│   │   ├── books       # PDF kitap kapakları
+│   │   └── ...         # Diğer görseller
+│   └── pdf             # İndirilebilir PDF dosyaları
+│       ├── antrenman   # Antrenman PDF rehberleri
+│       └── beslenme    # Beslenme PDF rehberleri
+├── .nojekyll           # GitHub Pages için Jekyll işlemesini devre dışı bırakır
+├── .gitignore          # Versiyon kontrolünde yok sayılacak dosyalar
+└── README.md           # Proje dokümantasyonu
 ```
 
-## Setup Instructions
+## Kurulum ve Dağıtım
 
-1. Clone the repository to your local machine.
-2. Navigate to the project directory.
-3. Open `src/index.html` in a web browser to view the landing page.
+1. GitHub Pages'te yayınlamak için:
+   - GitHub hesabınıza repo olarak yükleyin
+   - Reponuzun "Settings > Pages" bölümünde:
+     - Source: "Deploy from a branch" seçin
+     - Branch: "main" seçin
+     - Folder: "/" (kök dizin) seçin
+   - Save butonuna tıklayın
+   - `.nojekyll` dosyasının kök dizinde olduğundan emin olun
 
-## Features
+2. Yerel olarak test etmek için:
+   - Repoyu bilgisayarınıza klonlayın
+   - `index.html` dosyasını bir web tarayıcısında açın
 
-- Responsive design for optimal viewing on various devices.
-- Smooth scrolling between sections.
-- Dynamic interactions powered by JavaScript.
+## Özellikler
 
-## Contributing
+- Mobil uyumlu responsive tasarım
+- Ücretsiz indirilebilir PDF kaynaklar
+- Fitness hesaplayıcıları (BMI, kalori ihtiyacı, vb.)
+- Modern ve kullanıcı dostu arayüz
+- Sosyal medya entegrasyonu
 
-Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
+## GitHub Pages Hata Giderme
+
+Eğer GitHub Pages'ta site görüntülenmiyorsa:
+1. Ayarlarda Branch olarak "main" ve Folder olarak "/" (kök dizin) seçili olduğundan emin olun
+2. `.nojekyll` dosyasının kök dizinde bulunduğunu kontrol edin
+3. Dosya yollarının doğru olduğundan emin olun (örn: `./assets` yerine `assets` kullanın)
