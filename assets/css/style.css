@@ -1263,3 +1263,43 @@ section h2 {
         margin-bottom: 25px !important;
     }
 }
+
+/* ======================================== */
+/* ======= EK MOBİL MEDYA SORGUSU (768px) ====== */
+/* ======================================== */
+@media screen and (max-width: 768px) {
+    /* Genel mobil düzenlemeler */
+    body, html {
+        width: 100%;
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+    
+    p, h1, h2, h3, h4, h5, h6 {
+        width: 100%;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
+    }
+    
+    .about-description, .service-description {
+        white-space: normal;
+        padding: 0 5px;
+        max-width: 100%;
+    }
+    
+    /* Uzun metinlerin üç nokta ile kesilmesi */
+    .text-truncate {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+    
+    /* Diğer öğeler için kenar boşluklarını düzenleyin */
+    .about-container, .services-container {
+        margin: 0 5px;
+        padding: 10px 5px;
+    }
+}
