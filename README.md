@@ -1,7 +1,6 @@
 # Fitness Koçluğu Web Sitesi
 
-Bu proje, fitness koçluğu hizmetlerini tanıtan bir kişisel web sitesidir. Anasayfa, Hakkımızda, Hizmetler, PDF Kitaplar ve Hesaplayıcılar bölümlerini içerir. Responsive tasarımı sayesinde hem masaüstü hem de mobil cihazlarda optimum görüntüleme sağlar.
-
+Bu proje, fitness koçluğu hizmetlerini tanıtan bir kişisel web sitesidir. Anasayfa, Hakkımızda, Hizmetler, PDF Kitaplar ve Hesaplayıcılar bölümlerini içerir. 
 ## Proje Yapısı
 
 ```
