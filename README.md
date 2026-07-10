@@ -39,11 +39,17 @@ fitness-website
 
 ## Özellikler
 
-- Mobil uyumlu responsive tasarım
+- Mobil öncelikli tasarım
 - Ücretsiz indirilebilir PDF kaynaklar
 - Fitness hesaplayıcıları (BMI, kalori ihtiyacı, vb.)
 - Modern ve kullanıcı dostu arayüz
 - Sosyal medya entegrasyonu
+
+## Not
+
+Site mobil öncelikli olarak tasarlanmıştır ve en iyi mobil cihazlarda görünür.
+Masaüstü/geniş ekran için responsive iyileştirmeler henüz tamamlanmamıştır.
+Bu, yazılım öğrenme yolculuğumun ilk projelerinden biridir.
 
 ## GitHub Pages Hata Giderme
 
